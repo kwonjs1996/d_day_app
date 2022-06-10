@@ -1,4 +1,6 @@
+import 'package:d_day_app/screen1.dart';
 import 'package:flutter/material.dart';
+import 'package:d_day_app/screen1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,9 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.pink,
       ),
       home: const MyHomePage(),
     );
@@ -31,20 +32,63 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('D-Day-App'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              print("appbar 더보기 클릭됌");
+            },
+            icon: Icon(Icons.more_vert),
+          )
+        ],
       ),
       body: Center(
         child: Column(
           children: [
-            Row(
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text('디데이'),
-                ),
-                TextButton(onPressed: () {}, child: Text('더보기'))
-              ],
+            Container(
+              color: Colors.pink,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      print("디데이 click");
+                    },
+                    child: Text(
+                      '디데이',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Screen1();
+                          },
+                        ),
+                      );
+                      print("더보기 click");
+                    },
+                    child: Text(
+                      '더보기',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton.icon(
                   onPressed: () {},
