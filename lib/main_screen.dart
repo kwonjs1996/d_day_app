@@ -1,14 +1,11 @@
-import 'package:d_day_app/add_d_day_screen.dart';
+import 'package:d_day_app/screen1.dart';
 import 'package:flutter/material.dart';
 
-class Screen1 extends StatefulWidget {
-  const Screen1({Key? key}) : super(key: key);
+import 'add_d_day_screen.dart';
 
-  @override
-  State<Screen1> createState() => _Screen1State();
-}
+class Main_screen extends StatelessWidget {
+  const Main_screen({Key? key}) : super(key: key);
 
-class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +16,11 @@ class _Screen1State extends State<Screen1> {
             onPressed: () {
               print("appbar 더보기 클릭됌");
             },
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.more_vert),
           )
         ],
       ),
-      body: Container(
+      body: Center(
         child: Column(
           children: [
             Container(
@@ -61,20 +58,18 @@ class _Screen1State extends State<Screen1> {
                 ],
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [Text('사용자명'), Icon(Icons.browser_updated)],
+                TextButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.expand_more),
+                  label: Text('전체'),
                 ),
-                SizedBox(
-                  height: 3,
+                TextButton(
+                  onPressed: () {},
+                  child: Text('공유'),
                 ),
-                Text(
-                  "디데이가 안전하게 보관되고 있습니다.",
-                  textAlign: TextAlign.start,
-                )
               ],
             ),
             Container(
@@ -85,7 +80,14 @@ class _Screen1State extends State<Screen1> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddDDayScreen(),
+              ));
+          print("add button clicked");
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.pink,
       ),
